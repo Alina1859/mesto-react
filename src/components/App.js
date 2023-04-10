@@ -3,12 +3,15 @@ import { Header } from "./Header";
 import { Main } from "./Main";
 import { Footer } from "./Footer";
 import { PopupWithForm } from './PopupWithForm';
-import { api } from '../utils/api';
+import { ImagePopup } from './ImagePopup';
 
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
+
+  const [selectedCard, setSelectedCard] = React.useState(false);
+
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(!isEditAvatarPopupOpen);
@@ -22,10 +25,16 @@ function App() {
     setAddPlacePopupOpen(!isAddPlacePopupOpen);
   }
 
+
+  function handleCardClick(card) {
+    setSelectedCard(card);
+  }
+
   function closeAllPopups() {
     setEditAvatarPopupOpen(false);
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
+    setSelectedCard(false)
   }
 
   return (
@@ -37,6 +46,7 @@ function App() {
           onEditAvatar = {handleEditAvatarClick}
           onEditProfile = {handleEditProfileClick}
           onAddPlace = {handleAddPlaceClick}
+          onCardClick = {handleCardClick}
         />
         <Footer/>
 
@@ -134,45 +144,14 @@ function App() {
           </label>
         </PopupWithForm>
 
-        <div className="popup popup_modal_image">
-          <div className="popup__container-image">
-            <img src="#" alt="#" className="popup__card-image" tabIndex="0" />
-            <p className="popup__image-title"></p>
-            <button type="button" className="popup__close-btn"></button>
-          </div>
-        </div>
+        <ImagePopup
 
-        <div className="popup popup_modal_approve-delete">
-          <div className="popup__container">
-            <form className="form form_modal_approve-delete" name="approve-delete-form" noValidate>
-              <fieldset className="form__field">
-                <legend className="form__title form__title_approve-delete">Вы уверены?</legend>
-              </fieldset>
-              <button type="submit" className="popup__submit">Сохранить</button>
-            </form>
-            <button type="button" className="popup__close-btn"></button>
-          </div>
-        </div>
+          card={selectedCard}
 
-
-
+          onClose={closeAllPopups}
+        >
+        </ImagePopup>
       </div>
-
-      {/* Шаблон карточки */}
-      <template id="cardTemplate">
-        <li className="card">
-          <img src="#" alt="#" className="card__img" />
-          <div className="card__info-container">
-            <h2 className="card__name"> </h2>
-            <div className="card__like-container">
-              <button type="button" className="card__like-btn"></button>
-              <p className="card__like-count">0</p>
-            </div>
-
-          </div>
-          <button className="card__trash-btn"></button>
-        </li>
-      </template>
     </div>
   );
 }
