@@ -3,9 +3,7 @@ function Header() {
     <header className="header">
       <div className="logo"></div>
     </header>
-  )
+  );
 }
 
-export {
-  Header
-};
+export { Header };

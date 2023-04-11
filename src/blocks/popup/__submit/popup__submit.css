@@ -7,13 +7,13 @@
   font-size: 18px;
   line-height: 22px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-top: 18px;
 }
 
 .popup__submit:hover {
   opacity: 0.8;
-  transition: .2s linear;
+  transition: 0.2s linear;
   cursor: pointer;
 }
 

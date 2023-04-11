@@ -12,7 +12,7 @@
 
 .popup__close-btn:hover {
   opacity: 0.6;
-  transition: .2s linear;
+  transition: 0.2s linear;
   cursor: pointer;
 }
 

@@ -1,20 +1,29 @@
-function PopupWithForm(props) {
+function PopupWithForm({name, isOpen, title, onClose, children}) {
   return (
-    <div className={`popup popup_modal_${props.name} ${props.isOpen}`}>
+    <div className={`popup popup_modal_${name} ${isOpen ? "popup_opened" : ""}`}>
       <div className="popup__container">
-        <form className={`form form_${props.name}`} name={`${props.name}-form`} action="/register"  method="GET" noValidate>
+        <form
+          className={`form form_${name}`}
+          name={`${name}-form`}
+          action="/register"
+          method="GET"
+        >
           <fieldset className="form__field">
-            <legend className="form__title">{`${props.title}`}</legend>
-              {props.children}
+            <legend className="form__title">{`${title}`}</legend>
+            {children}
           </fieldset>
-          <button type="submit" className="popup__submit">Сохранить</button>
+          <button type="submit" className="popup__submit">
+            Сохранить
+          </button>
         </form>
-        <button type="button" className="popup__close-btn" onClick={props.onClose}></button>
+        <button
+          type="button"
+          className="popup__close-btn"
+          onClick={onClose}
+        ></button>
       </div>
     </div>
-  )
+  );
 }
 
-export {
-  PopupWithForm
-};
+export { PopupWithForm };
