@@ -1,4 +1,4 @@
-function PopupWithForm({name, isOpen, title, onClose, children}) {
+function PopupWithForm({name, isOpen, title, onClose, children, onSubmit}) {
   return (
     <div className={`popup popup_modal_${name} ${isOpen ? "popup_opened" : ""}`}>
       <div className="popup__container">
@@ -12,7 +12,7 @@ function PopupWithForm({name, isOpen, title, onClose, children}) {
             <legend className="form__title">{`${title}`}</legend>
             {children}
           </fieldset>
-          <button type="submit" className="popup__submit">
+          <button type="submit" className="popup__submit" onClick={onSubmit}>
             Сохранить
           </button>
         </form>
@@ -24,6 +24,6 @@ function PopupWithForm({name, isOpen, title, onClose, children}) {
       </div>
     </div>
   );
-}
+};
 
 export { PopupWithForm };

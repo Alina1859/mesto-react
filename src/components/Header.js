@@ -4,6 +4,6 @@ function Header() {
       <div className="logo"></div>
     </header>
   );
-}
+};
 
 export { Header };

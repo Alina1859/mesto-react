@@ -4,6 +4,6 @@ function Footer() {
       <p className="footer__copyright">&copy;2022 Mesto Russia</p>
     </footer>
   );
-}
+};
 
 export { Footer };

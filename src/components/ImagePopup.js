@@ -19,6 +19,6 @@ function ImagePopup({isOpen, card, onClose}) {
       </div>
     </div>
   );
-}
+};
 
 export { ImagePopup };

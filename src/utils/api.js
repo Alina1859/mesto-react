@@ -11,7 +11,7 @@ export default class Api {
     return res.json();
   }
 
-  getInitialCards() {
+  getCardsList() {
     return fetch(`${this.baseUrl}/cards`, {
       headers: {
         authorization: this.headers.authorization,
@@ -27,7 +27,7 @@ export default class Api {
     }).then((res) => this._getResponseData(res));
   }
 
-  patchUserData(data) {
+  setUserData(name, about) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
@@ -35,13 +35,13 @@ export default class Api {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: `${data.name}`,
-        about: `${data.description}`,
+        name: `${name}`,
+        about: `${about}`,
       }),
     }).then((res) => this._getResponseData(res));
   }
 
-  addNewCard(data) {
+  setNewCard(data) {
     return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
       headers: {
@@ -85,7 +85,7 @@ export default class Api {
     }).then((res) => this._getResponseData(res));
   }
 
-  patchUserAvatar(link) {
+  setUserAvatar(link) {
     return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: {
