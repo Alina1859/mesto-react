@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { api } from "../utils/api";
-import { Card } from "../components/Card";
+import Card from "../components/Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function Main({onEditAvatar, onEditProfile, onAddCard, onCardClick, onCardLike, cards, onCardDelete}) {
+export default function Main({onEditAvatar, onEditProfile, onAddCard, onCardClick, onCardLike, cards, onCardDelete}) {
 
   const currentUser = useContext(CurrentUserContext);
 
@@ -24,7 +24,7 @@ function Main({onEditAvatar, onEditProfile, onAddCard, onCardClick, onCardLike, 
                 type="button"
                 className="profile__edit-btn"
                 onClick={onEditProfile}
-              ></button>
+              />
             </div>
             <p className="profile__description">{currentUser.about}</p>
           </div>
@@ -33,7 +33,7 @@ function Main({onEditAvatar, onEditProfile, onAddCard, onCardClick, onCardLike, 
           type="button"
           className="profile__add-btn"
           onClick={onAddCard}
-        ></button>
+        />
       </section>
 
       <section className="elements">
@@ -56,5 +56,3 @@ function Main({onEditAvatar, onEditProfile, onAddCard, onCardClick, onCardLike, 
     </main>
   );
 };
-
-export { Main };

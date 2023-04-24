@@ -1,9 +1,7 @@
-import React, { useRef, useState } from "react";
-import { PopupWithForm } from "./PopupWithForm";
+import React, { useState } from "react";
+import PopupWithForm from "./PopupWithForm";
 
-function AddPlacePopup({ isOpen, onClose, onAddCard }) {
-  const newCardNameRef = useRef();
-  const newCardLinkRef = useRef();
+export default function AddPlacePopup({ isOpen, onClose, onAddCard, isLoading }) {
   const [newCardName, setNewCardName] = useState('');
   const [newCardLink, setNewCardLink] = useState('');
 
@@ -23,6 +21,8 @@ function AddPlacePopup({ isOpen, onClose, onAddCard }) {
       link: newCardLink
     });
 
+    setNewCardName('')
+    setNewCardLink('')
   };
 
   return (
@@ -32,6 +32,7 @@ function AddPlacePopup({ isOpen, onClose, onAddCard }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      buttonText={isLoading? 'Добавление...' : 'Добавить'}
     >
       <label htmlFor="place-name-input" className="form__label">
         <input
@@ -42,7 +43,6 @@ function AddPlacePopup({ isOpen, onClose, onAddCard }) {
           className="form__input form__input_place_name"
           minLength="2"
           maxLength="30"
-          ref={newCardNameRef || ''}
           value={newCardName} onChange={handleNameChange}
           required
         />
@@ -55,7 +55,6 @@ function AddPlacePopup({ isOpen, onClose, onAddCard }) {
           placeholder="Ссылка на картинку"
           id="place-link-input"
           className="form__input form__input_place_link"
-          ref={newCardLinkRef || ''}
           value={newCardLink} onChange={handleLinkChange}
           required
         />
@@ -64,5 +63,3 @@ function AddPlacePopup({ isOpen, onClose, onAddCard }) {
     </PopupWithForm>
   );
 };
-
-export { AddPlacePopup };
