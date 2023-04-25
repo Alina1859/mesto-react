@@ -1,32 +1,24 @@
 import React, { useState, useContext, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import {useForm} from "../hooks/useForm";
 
 export default function EditProfilePopup({isOpen, onClose, onUpdateUser, isLoading}) {
   const currentUser = useContext(CurrentUserContext);
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
 
-  function handleChangeName(e) {
-    setName(e.target.value);
-  };
-
-  function handleChangeDescription(e) {
-    setDescription(e.target.value);
-  };
+  const {values, handleChange, setValues} = useForm({});
 
   function handleSubmit(e) {
     e.preventDefault();
 
     onUpdateUser({
-      name,
-      about: description,
+      name: values.name,
+      about: values.description
     });
   };
 
   useEffect(() => {
-    setName(currentUser.name);
-    setDescription(currentUser.about);
+    setValues({name: currentUser.name, description: currentUser.about});
   }, [currentUser, isOpen]);
 
   return (
@@ -42,8 +34,8 @@ export default function EditProfilePopup({isOpen, onClose, onUpdateUser, isLoadi
         <input
           type="text"
           name="name"
-          value={name || ''}
-          onChange={handleChangeName}
+          value={values.name || ''}
+          onChange={handleChange}
           placeholder="Введите имя профиля"
           id="profile-name-input"
           className="form__input form__input_profile_name"
@@ -57,8 +49,8 @@ export default function EditProfilePopup({isOpen, onClose, onUpdateUser, isLoadi
         <input
           type="text"
           name="description"
-          value={description || ''}
-          onChange={handleChangeDescription}
+          value={values.description || ''}
+          onChange={handleChange}
           placeholder="Введите описание профиля"
           id="profile-description-input"
           className="form__input form__input_profile_description"
