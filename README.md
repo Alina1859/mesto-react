@@ -18,4 +18,4 @@
 * Добавить валидацию
 * Тернарники
 
-[ССЫЛКА] (http://localhost:3000)
+[ССЫЛКА] (https://Alina1859.github.io/mesto-react/)
