@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 import {useForm} from "../hooks/useForm";
 
@@ -37,7 +37,7 @@ export default function AddPlacePopup({ isOpen, onClose, onAddCard, isLoading })
           className="form__input form__input_place_name"
           minLength="2"
           maxLength="30"
-          value={values.name || ''} onChange={handleChange}
+          value={(values.name === undefined || values.name === null) ? '' : values.name} onChange={handleChange}
           required
         />
         <span className="place-name-input-error form__input-error"></span>
@@ -49,7 +49,7 @@ export default function AddPlacePopup({ isOpen, onClose, onAddCard, isLoading })
           placeholder="Ссылка на картинку"
           id="place-link-input"
           className="form__input form__input_place_link"
-          value={values.link || ''} onChange={handleChange}
+          value={(values.link === undefined || values.link === null) ? '' : values.link} onChange={handleChange}
           required
         />
         <span className="place-link-input-error form__input-error"></span>

@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { api } from "../utils/api";
-import Card from "../components/Card";
+import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function Main({onEditAvatar, onEditProfile, onAddCard, onCardClick, onCardLike, cards, onCardDelete}) {

@@ -34,7 +34,7 @@ export default function EditProfilePopup({isOpen, onClose, onUpdateUser, isLoadi
         <input
           type="text"
           name="name"
-          value={values.name || ''}
+          value={(values.name === undefined || values.name === null) ? '' : values.name}
           onChange={handleChange}
           placeholder="Введите имя профиля"
           id="profile-name-input"
@@ -49,7 +49,7 @@ export default function EditProfilePopup({isOpen, onClose, onUpdateUser, isLoadi
         <input
           type="text"
           name="description"
-          value={values.description || ''}
+          value={(values.description === undefined || values.description === null) ? '' : values.description}
           onChange={handleChange}
           placeholder="Введите описание профиля"
           id="profile-description-input"
